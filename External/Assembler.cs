@@ -9,7 +9,6 @@ public static class Assembler
         { "LDA", "0" },
         { "ADD", "1" },
         { "SUB", "2" },
-        { "JMP", "3" },
         { "OUT", "E" },
         { "HLT", "F" },
     };

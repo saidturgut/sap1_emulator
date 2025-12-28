@@ -21,10 +21,6 @@ public class SignalSetTable
         { "2_3", [Signal.RAM_OUT, Signal.B_LOAD] },
         { "2_4", [Signal.ALU_SUB, Signal.ALU_OUT, Signal.A_LOAD] },
         
-        // JMP x3
-        { "3_3", [Signal.RAM_OUT, Signal.PC_LOAD] },
-        { "3_4", [Signal.None] },
-        
         // OUT xE
         { "E_3", [Signal.A_OUT, Signal.PRINT] },
         { "E_4", [Signal.None] },
