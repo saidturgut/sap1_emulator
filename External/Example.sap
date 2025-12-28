@@ -1,0 +1,8 @@
+LDA 9
+ADD 9
+SUB A
+OUT
+HLT
+
+9 4F
+A 7
