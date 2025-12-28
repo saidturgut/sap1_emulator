@@ -30,7 +30,7 @@ public class SignalSetTable
         { "E_4", [Signal.None] },
         
         // HLT xF
-        { "F_3", [Signal.HLT] },
-        { "F_4", [Signal.None] },
+        { "F_3", [Signal.None] },
+        { "F_4", [Signal.HLT] },
     };
 }

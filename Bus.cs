@@ -1,4 +1,5 @@
 namespace sap1_emulator;
+using External;
 
 public class Bus
 {
@@ -12,7 +13,7 @@ public class Bus
     }
     
     public void Load(byte input)
-    {
+    { 
         if (driven) 
             throw new Exception("Bus contention!");
         

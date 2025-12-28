@@ -1,3 +1,5 @@
+using sap1_emulator.External;
+
 namespace sap1_emulator;
 using Registers;
 using Signals;
@@ -17,8 +19,6 @@ public class CentralProcessingUnit
     private readonly MemoryAddressRegister MemoryAddressRegister = new MemoryAddressRegister();
     private readonly InstructionRegister InstructionRegister = new InstructionRegister();
     
-    private int counter = 0;
-    
     public void Init()
     {
         RandomAccessMemory.Init
@@ -33,7 +33,7 @@ public class CentralProcessingUnit
         
         Signal[] signals = 
             ControlUnit.SignalSet
-                (Bus.Output());
+                (InstructionRegister.DriveToControlUnit());
         
         ArithmeticLogicUnit.Compute
             (ARegister, BRegister, signals);
@@ -42,11 +42,11 @@ public class CentralProcessingUnit
 
         Latch(signals);
         
-        ControlUnit.Advance();
+        ControlUnit.Tick();
         
-        Thread.Sleep(100);
+        if (Flags.DebugMode) Console.WriteLine("********");
         
-        if(signals.Contains(Signal.PRINT)) Console.Write($"PRINTING : {Bus.Output()}");
+        if(signals.Contains(Signal.PRINT)) Console.WriteLine($"\nOUTPUT : {Bus.Output()}\n");
         
         if (!signals.Contains(Signal.HLT)) Tick();
     }

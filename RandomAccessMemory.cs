@@ -12,13 +12,16 @@ public class RandomAccessMemory
     public void Init(MemoryAddressRegister memoryAddressRegister)
     {
         Memory = Assembler.Assemble("Example.sap");
-
-        for (int i = 0; i < 16; i++)
-        {
-            Console.WriteLine($"{i} -> {Convert.ToString(Memory[i], 2).PadLeft(8, '0')}");
-        }
-
+        
         MemoryAddressRegister = memoryAddressRegister;
+
+        if (Flags.DebugMode)
+        {
+            for (int i = 0; i < 16; i++)
+            {
+                Console.WriteLine($"{i} -> {Convert.ToString(Memory[i], 2).PadLeft(8, '0')}");
+            }
+        }
     }
     
     public void Drive(Bus bus, Signal[] signals)

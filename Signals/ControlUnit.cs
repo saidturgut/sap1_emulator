@@ -2,7 +2,7 @@ namespace sap1_emulator.Signals;
 
 public class ControlUnit : SignalSetTable
 {
-    private byte TimeRegister; // small register in control unit
+    private byte TimeRegister;
     
     public Signal[] SignalSet(byte opcode)
     {
@@ -12,9 +12,10 @@ public class ControlUnit : SignalSetTable
         return Table[$"{opc}_{TimeRegister}"];
     }
     
-    public void Advance()
+    public void Tick()
     {
         TimeRegister++;
-        if (TimeRegister > 2) TimeRegister = 0;
+        if (TimeRegister > 4)
+            TimeRegister = 0;
     }
 }

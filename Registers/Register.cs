@@ -1,5 +1,3 @@
-using sap1_emulator.Interfaces;
-
 namespace sap1_emulator.Registers;
 using Signals;
 

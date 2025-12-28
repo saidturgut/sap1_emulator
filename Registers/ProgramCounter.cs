@@ -1,5 +1,6 @@
 namespace sap1_emulator.Registers;
 using Signals;
+using External;
 
 public class ProgramCounter : Register
 {
@@ -16,5 +17,8 @@ public class ProgramCounter : Register
         
         if (signals.Contains(Signal.PC_LOAD))
             base.Latch(bus, signals);
+        
+        if (!Flags.DebugMode) return;
+        Console.WriteLine($"PROGRAM COUNTER -> {Assembler.PrintBinary(value)}");
     }
 }

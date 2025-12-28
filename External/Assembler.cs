@@ -41,6 +41,11 @@ public static class Assembler
         return output;
     }
 
+    public static string PrintBinary(byte value)
+    {
+        return Convert.ToString(value, 2).PadLeft(8, '0');
+    }
+
     private static byte Hex(string input)
     {
         return Convert.ToByte(input, 16);

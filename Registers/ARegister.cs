@@ -1,5 +1,6 @@
 namespace sap1_emulator.Registers;
 using Signals;
+using External;
 
 public class ARegister : Register
 {
@@ -13,11 +14,9 @@ public class ARegister : Register
     {
         if (signals.Contains(Signal.A_LOAD))
             base.Latch(bus, signals);
-    }
 
-    public void LatchFromAlu(byte input)
-    {
-        value = input;
+        if (!Flags.DebugMode) return;
+        Console.WriteLine($"A REGISTER -> {Assembler.PrintBinary(value)}");
     }
     
     public byte DriveToALU()
